@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Image</title>
+
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      overflow: hidden;
+      animation: fadeBg 0.5s ease-in-out;
+    }
+
+    @keyframes fadeBg {
+      from { background: rgba(0,0,0,0); }
+      to { background: rgba(0,0,0,0.85); }
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 90%;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.3);
+      animation: zoomIn 0.5s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    /* Back button style */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <img id="fullImage">
+    <button class="back-btn"onclick="goBack()">⬅ Back</button>
+
+  <!-- Full Image -->
+  <img id="fullImage">
+
+  <script>
+    // URL se image read karna
+    const params = new URLSearchParams(window.location.search);
+    const imgSrc = params.get("img");
+
+    document.getElementById("fullImage").src = imgSrc;
+       // URL se image ka src lena
+     function goBack() {
+    window.location.href = "photo.html";  // Replace with your page name
+  }
+  </script>
+</body>
+
+</html>

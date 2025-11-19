@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Filter</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <style>
+    .gallery-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: 0.3s ease-in-out;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.09);
+    }
+
+    .filter-btn {
+      border: 1px solid #333;
+      padding: 6px 18px;
+      margin: 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      background: white;
+    }
+
+    .filter-btn.active {
+      background: black;
+      color: white;
+    }
+
+    /* Image animation */
+    .gallery-item {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .gallery-item.hide {
+      opacity: 0;
+      transform: scale(0.8);
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .row {
+      position: relative;
+      min-height: 300px;
+    }
+
+    /* Background animations */
+    .gallery-container {
+      transition: background 0.8s ease-in-out;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    .gallery-bg-1 {
+      background: radial-gradient(circle, #f0f0f0, #e0e0e0);
+    }
+
+    .gallery-bg-2 {
+      background: radial-gradient(circle, #fff3e0, #ffe0b2);
+    }
+
+    .gallery-bg-3 {
+      background: radial-gradient(circle, #e8f5e9, #c8e6c9);
+    }
+
+    .gallery-bg-4 {
+      background: radial-gradient(circle, #e3f2fd, #bbdefb);
+    }
+
+    .gallery-bg-5 {
+      background: radial-gradient(circle, #fce4ec, #f8bbd0);
+    }
+     .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container text-center mt-5">
+
+    <h2 class="mb-3">Gallery </h2>
+
+    <!-- FILTER BUTTONS -->
+    <div class="mb-4">
+      <button class="filter-btn active" data-filter="all">ALL</button>
+      <button class="filter-btn" data-filter="Mahadev">Mahadev</button>
+      <button class="filter-btn" data-filter="Radha-Krishan">Radha Krishan</button>
+      <button class="filter-btn" data-filter="Dhuna">Dhuna</button>
+      <button class="filter-btn" data-filter="Temple">Temple</button>
+    </div>
+
+    <!-- GALLERY BACKGROUND + ITEMS INSIDE -->
+    <div class="gallery-container gallery-bg-1">
+
+      <div class="row g-4">
+
+        <!-- Mahadev -->
+        <div class="col-md-4 gallery-item Mahadev">
+           <a href="/gallery/mahadev.jpg" target="_blank">
+          <img src="/gallery/mahadev.jpg" class="gallery-img">
+          </a>
+        </div>
+
+        <div class="col-md-4 gallery-item Mahadev">
+          <img src="/gallery/mahadev 1.jpg" class="gallery-img">
+        </div>
+
+        <!-- Radha Krishna -->
+        <div class="col-md-4 gallery-item Radha-Krishan">
+          <img src="/gallery/radha krishan photo.jpg" class="gallery-img">
+        </div>
+
+        <div class="col-md-4 gallery-item Radha-Krishan">
+          <img src="/gallery/radha krishan.jpg" class="gallery-img">
+        </div>
+
+        <!-- Dhuna -->
+        <div class="col-md-4 gallery-item Dhuna">
+          <img src="/gallery/dhuna.jpg" class="gallery-img">
+        </div>
+
+        <div class="col-md-4 gallery-item Dhuna">
+          <img src="/gallery/tulsi.jpg" class="gallery-img">
+        </div>
+
+        <!-- Temple -->
+        <div class="col-md-4 gallery-item Temple">
+          <img src="/gallery/samadhi.jpg" class="gallery-img">
+        </div>
+
+        <div class="col-md-4 gallery-item Temple">
+          <img src="/gallery/aghanjar.jpg" class="gallery-img">
+        </div>
+
+      </div>
+    </div>
+  </div>
+<img id="fullImage">
+   <button class="back-btn" onclick="goToMain()">⬅ Back</button>
+ 
+  <script>
+    const buttons = document.querySelectorAll(".filter-btn");
+    const items = document.querySelectorAll(".gallery-item");
+    const galleryContainer = document.querySelector(".gallery-container");
+
+    const bgClasses = [
+      "gallery-bg-1",
+      "gallery-bg-2",
+      "gallery-bg-3",
+      "gallery-bg-4",
+      "gallery-bg-5"
+    ];
+
+    buttons.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+
+        // Active style
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // Background animation
+        galleryContainer.classList.remove(...bgClasses);
+        galleryContainer.classList.add(bgClasses[index]);
+
+        let filter = btn.getAttribute("data-filter");
+
+        // Filtering images
+        items.forEach(item => {
+          item.classList.add("hide");
+
+          if (filter === "all" || item.classList.contains(filter)) {
+            setTimeout(() => {
+              item.classList.remove("hide");
+              item.style.position = "relative";
+            }, 200);
+          } else {
+            item.style.position = "absolute";
+          }
+        });
+
+      });
+    });
+  const images = document.querySelectorAll(".gallery-img");
+
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      let imageUrl = img.getAttribute("src");
+      window.open("view-image.html?img=" + imageUrl, "_blank");
+    });
+  });
+
+   function goToMain() {
+    window.location.href = "../index.html";
+  }
+
+</script>
+
+
+
+</body>
+
+</html>
