@@ -10,208 +10,99 @@ body {
 /* background-image: url(/image/galaxy.gif); */
 }
 
-.header {
-  /* background: linear-gradient(to right, #fff4e3, #fff8e1); */
-  text-align: center;
-  padding: 15px 0;
-  border-bottom: 3px solid #d4af37;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  background-color: #f8b400;
-}
 
-.temple-header h1 {
-  color: #b36b00;
-  font-family: 'Georgia', serif;
-  font-size: 2rem;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-   
-}
-
-.temple-header p {
-  font-style: italic;
-  color: #7b5e00;
-  font-size: 1rem;
-  margin: 0;
-}
-
-/* 🌺 Navbar */
-.navbar {
-  background: linear-gradient(90deg, #b8860b, #8b5e00);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 30px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-  transition: all 0.4s ease;
-}
-
-.nav-links li {
-  position: relative;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 600;
-  padding: 10px 16px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  background: #f7e7a2;
-  color: #5a3e00;
-}
-
-/* 🕉️ Dropdown Menu */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 45px;
-  left: 0;
-  background: #fffdf0;
-  list-style: none;
-  border-radius: 8px;
-  min-width: 180px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  padding: 8px 0;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dropdown-menu li a {
-  color: #5a3e00;
-  display: block;
-  padding: 10px 15px;
-  white-space: nowrap;
-}
-
-.dropdown-menu li a:hover {
-  background: #f8e58e;
-  color: #4d3200;
-}
-
-/* ❤️ Donate Button */
-.donate-btn {
-  background: linear-gradient(90deg, #d63c2f, #b71c1c);
-  color: #fff !important;
-  font-weight: bold;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-}
-
-.donate-btn:hover {
-  background: linear-gradient(90deg, #b71c1c, #8b0000);
-  transform: scale(1.05);
-  transition: all 0.3s ease;
-}
-
-/* 📱 Mobile Responsive */
-.menu-toggle {
-  display: none;
-  color: white;
-  font-size: 28px;
-  cursor: pointer;
-  position: absolute;
-  right: 25px;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    display: none;
-    width: 100%;
-    background: linear-gradient(90deg, #b8860b, #8b5e00);
-    border-top: 2px solid #d4af37;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-links li {
-    width: 100%;
-    text-align: left;
-  }
-
-  .nav-links a {
-    width: 100%;
-    display: block;
-    padding: 12px 20px;
-  }
-
-  /* Mobile Dropdown Styling */
-  .dropdown-menu {
-    position: static;
-    box-shadow: none;
-    /* background: #f7eebd; */
-    padding-left: 15px;
-  }
-
-  .dropdown-menu li a {
-    padding: 8px 10px;
-  }
-}
-/* Mobile Navigation */
-.nav-links {
-  display: none;
-  flex-direction: column;
-  /* background: #fff; */
+header {
   width: 100%;
-  text-align: center;
-  padding: 20px 0;
+  background: #111;
 }
 
-.nav-links.active {
+.navbar {
+  max-width: 1300px;
+  margin: auto;
+  padding: 15px 20px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ====== DESKTOP NAV LINKS ====== */
+.navlinks {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+
+.navlinks li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.navlinks li a:hover {
+  color: #ffcc00;
+}
+
+/* Donate Button */
+.donate {
+  background: #ffcc00;
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: black !important;
+  font-weight: 600;
+}
+
+/* ====== MENU TOGGLE (Mobile) ====== */
 .menu-toggle {
-  display: block;
-  font-size: 28px;
+  font-size: 30px;
   cursor: pointer;
+  display: none;
+  user-select: none;
 }
 
-/* MEDIA QUERY */
+/* ====== MOBILE VERSION ====== */
 @media (max-width: 768px) {
-  .nav-links {
-    display: block;
-  }
-
   .menu-toggle {
     display: block;
   }
+
+  .navlinks {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #111;
+    width: 250px;
+    height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    gap: 25px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    /* animation */
+    opacity: 0;
+    transition: 0.4s ease;
+  }
+
+  /* When Active */
+  .navlinks.active {
+    height: 350px;
+    opacity: 1;
+    padding-top: 20px;
+  }
+
+  .navlinks li a {
+    font-size: 18px;
+  }
 }
+
 
 
 /* hero section */
@@ -221,7 +112,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 5%;
+  padding: 20px 5%;
   background-image: url(image\ front/galaxy.gif);
 }
 

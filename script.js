@@ -1,9 +1,8 @@
-// Menu Toggle Script
 const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("nav-links");
+const navlinks = document.getElementById("navlinks");
 
 menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+  navlinks.classList.toggle("active");
 });
 
 
