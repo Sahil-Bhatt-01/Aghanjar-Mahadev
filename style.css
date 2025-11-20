@@ -174,7 +174,7 @@ body {
   .dropdown-menu {
     position: static;
     box-shadow: none;
-    background: #f7eebd;
+    /* background: #f7eebd; */
     padding-left: 15px;
   }
 
@@ -182,8 +182,37 @@ body {
     padding: 8px 10px;
   }
 }
+/* Mobile Navigation */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  /* background: #fff; */
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
 
-/* show hamburger */
+.nav-links.active {
+  display: flex;
+}
+
+.menu-toggle {
+  display: block;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+  .nav-links {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
 
 /* hero section */
 .hero {
