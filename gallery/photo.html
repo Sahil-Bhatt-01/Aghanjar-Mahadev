@@ -16,6 +16,7 @@
       object-fit: cover;
       border-radius: 10px;
       transition: 0.3s ease-in-out;
+      cursor: pointer;
     }
 
     .gallery-img:hover {
@@ -36,28 +37,17 @@
       color: white;
     }
 
-    /* Image animation */
     .gallery-item {
       transition: opacity 0.4s ease, transform 0.4s ease;
-      opacity: 1;
-      transform: scale(1);
     }
 
     .gallery-item.hide {
       opacity: 0;
       transform: scale(0.8);
       position: absolute;
-      pointer-events: none;
     }
 
-    .row {
-      position: relative;
-      min-height: 300px;
-    }
-
-    /* Background animations */
     .gallery-container {
-      transition: background 0.8s ease-in-out;
       padding: 20px;
       border-radius: 20px;
     }
@@ -81,24 +71,66 @@
     .gallery-bg-5 {
       background: radial-gradient(circle, #fce4ec, #f8bbd0);
     }
-     .back-btn {
+
+    .back-btn {
       position: fixed;
       top: 20px;
       left: 20px;
       padding: 10px 20px;
       background: white;
       color: black;
-      font-weight: bold;
       border-radius: 30px;
       border: none;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      transition: 0.3s;
     }
 
-    .back-btn:hover {
-      background: #f0f0f0;
-      transform: scale(1.05);
+    /* ---------------- FULL SCREEN CUSTOM MODAL ---------------- */
+
+    .custom-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SAME HEIGHT-WIDTH SQUARE IMAGE */
+    .modal-square-img {
+      width: 340px;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* CLOSE BUTTON */
+    .close-btn {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 45px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -107,7 +139,7 @@
 
   <div class="container text-center mt-5">
 
-    <h2 class="mb-3">Gallery </h2>
+    <h2 class="mb-3">Gallery</h2>
 
     <!-- FILTER BUTTONS -->
     <div class="mb-4">
@@ -118,12 +150,9 @@
       <button class="filter-btn" data-filter="Temple">Temple</button>
     </div>
 
-    <!-- GALLERY BACKGROUND + ITEMS INSIDE -->
     <div class="gallery-container gallery-bg-1">
-
       <div class="row g-4">
 
-        <!-- Mahadev -->
         <div class="col-md-4 gallery-item Mahadev">
           <img src="images/mahadev.jpg" class="gallery-img">
         </div>
@@ -132,7 +161,6 @@
           <img src="images/mahadev 1.jpg" class="gallery-img">
         </div>
 
-        <!-- Radha Krishna -->
         <div class="col-md-4 gallery-item Radha-Krishan">
           <img src="images/radha krishan photo.jpg" class="gallery-img">
         </div>
@@ -141,7 +169,6 @@
           <img src="images/radha krishan.jpg" class="gallery-img">
         </div>
 
-        <!-- Dhuna -->
         <div class="col-md-4 gallery-item Dhuna">
           <img src="images/dhuna.jpg" class="gallery-img">
         </div>
@@ -150,7 +177,6 @@
           <img src="images/tulsi.jpg" class="gallery-img">
         </div>
 
-        <!-- Temple -->
         <div class="col-md-4 gallery-item Temple">
           <img src="images/samadhi.jpg" class="gallery-img">
         </div>
@@ -162,67 +188,72 @@
       </div>
     </div>
   </div>
-<img id="fullImage">
-   <button class="back-btn" onclick="goToMain()">⬅ Back</button>
- 
+
+  <button class="back-btn" onclick="goToMain()">⬅ Back</button>
+
+  <!-- FULL PAGE CUSTOM MODAL -->
+  <div id="fullImageModal" class="custom-modal">
+    <span class="close-btn">&times;</span>
+    <img id="fullModalImage" class="modal-square-img">
+  </div>
+
   <script>
+    /* FILTER */
     const buttons = document.querySelectorAll(".filter-btn");
     const items = document.querySelectorAll(".gallery-item");
     const galleryContainer = document.querySelector(".gallery-container");
 
-    const bgClasses = [
-      "gallery-bg-1",
-      "gallery-bg-2",
-      "gallery-bg-3",
-      "gallery-bg-4",
-      "gallery-bg-5"
-    ];
+    const bgClasses = ["gallery-bg-1", "gallery-bg-2", "gallery-bg-3", "gallery-bg-4", "gallery-bg-5"];
 
     buttons.forEach((btn, index) => {
       btn.addEventListener("click", () => {
-
-        // Active style
         buttons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
-        // Background animation
         galleryContainer.classList.remove(...bgClasses);
         galleryContainer.classList.add(bgClasses[index]);
 
         let filter = btn.getAttribute("data-filter");
 
-        // Filtering images
         items.forEach(item => {
-          item.classList.add("hide");
-
           if (filter === "all" || item.classList.contains(filter)) {
-            setTimeout(() => {
-              item.classList.remove("hide");
-              item.style.position = "relative";
-            }, 200);
+            item.classList.remove("hide");
+            item.style.position = "relative";
           } else {
-            item.style.position = "absolute";
+            item.classList.add("hide");
           }
         });
-
       });
     });
-  const images = document.querySelectorAll(".gallery-img");
 
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      let imageUrl = img.getAttribute("src");
-      window.open("view-image.html?img=" + imageUrl, "_blank");
+    /* FULL SCREEN MODAL SCRIPT */
+    const modal = document.getElementById("fullImageModal");
+    const modalImg = document.getElementById("fullModalImage");
+    const closeBtn = document.querySelector(".close-btn");
+
+    document.querySelectorAll(".gallery-img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
     });
-  });
 
-   function goToMain() {
-    window.location.href = "../index.html";
-  }
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
 
-</script>
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
 
+    function goToMain() {
+      window.location.href = "../index.html";
+    }
+    document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') modal.style.display = 'none';
+});
 
+  </script>
 
 </body>
 

@@ -27,3 +27,17 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+
+
+  const galleryImages = document.querySelectorAll(".gallery-img");
+  const modalImage = document.getElementById("modalImage");
+
+  galleryImages.forEach(img => {
+    img.addEventListener("click", function () {
+      modalImage.src = this.src; // modal me image set
+      const modal = new bootstrap.Modal(document.getElementById("imgModal"));
+      modal.show();
+    });
+  });
+
