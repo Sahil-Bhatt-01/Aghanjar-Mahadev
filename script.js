@@ -1,3 +1,4 @@
+
 const menuToggle = document.getElementById("menuToggle");
 const navlinks = document.getElementById("navlinks");
 

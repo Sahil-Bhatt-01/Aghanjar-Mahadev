@@ -7,42 +7,43 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-/* background-image: url(/image/galaxy.gif); */
+  /* background-image: url(/image/galaxy.gif); */
 }
-
 
 header {
   width: 100%;
-  background: #111;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 
 .navbar {
-  max-width: 1300px;
-  margin: auto;
-  padding: 15px 20px;
+  width: 100%;
+  padding: 15px 30px;
+  background: #222;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
 }
 
 .logo {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: bold;
 }
 
-/* ====== DESKTOP NAV LINKS ====== */
+/* Desktop Nav */
 .navlinks {
   list-style: none;
   display: flex;
-  gap: 35px;
+  gap: 30px;
   align-items: center;
 }
 
 .navlinks li a {
-  color: white;
   text-decoration: none;
-  font-size: 18px;
+  color: white;
+  font-size: 17px;
   transition: 0.3s;
 }
 
@@ -50,25 +51,24 @@ header {
   color: #ffcc00;
 }
 
-/* Donate Button */
 .donate {
+  padding: 8px 16px;
   background: #ffcc00;
-  padding: 6px 14px;
-  border-radius: 20px;
-  color: black !important;
-  font-weight: 600;
+  color: #222 !important;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
-/* ====== MENU TOGGLE (Mobile) ====== */
+/* Hamburger Button Hidden in Desktop */
 .menu-toggle {
   font-size: 30px;
   cursor: pointer;
   display: none;
-  user-select: none;
 }
 
-/* ====== MOBILE VERSION ====== */
+/* ---------- MOBILE MODE ---------- */
 @media (max-width: 768px) {
+
   .menu-toggle {
     display: block;
   }
@@ -76,32 +76,22 @@ header {
   .navlinks {
     position: absolute;
     top: 70px;
-    right: 0;
-    background: #111;
-    width: 250px;
-    height: 0;
-    overflow: hidden;
+    right: -250px;
+    width: 220px;
     flex-direction: column;
-    gap: 25px;
-    padding-top: 0;
-    padding-bottom: 0;
-
-    /* animation */
-    opacity: 0;
-    transition: 0.4s ease;
+    background: #111;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 10px;
+    transition: right 0.4s ease;
   }
 
-  /* When Active */
+  /* When active class added */
   .navlinks.active {
-    height: 350px;
-    opacity: 1;
-    padding-top: 20px;
-  }
-
-  .navlinks li a {
-    font-size: 18px;
+    right: 10px;
   }
 }
+
 
 
 
@@ -181,6 +171,7 @@ header {
   border-radius: 10px;
   object-fit: cover;
 }
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero {
@@ -279,6 +270,7 @@ header {
 .event-btn .btn:hover {
   background-color: #ffcc33;
 }
+
 /* Responsive */
 @media (max-width: 750px) {
   .event-section {
@@ -286,16 +278,19 @@ header {
     gap: 30px;
     text-align: center;
   }
-.event-title{
+
+  .event-title {
     align-items: center;
-}
+  }
+
   .countdown {
     justify-content: center;
     flex-wrap: wrap;
   }
 }
-.btn{
-    list-style:none ;
+
+.btn {
+  list-style: none;
 }
 
 /* our services */
@@ -307,5 +302,3 @@ body {
   background: #fff;
   color: #333;
 }
-
-
