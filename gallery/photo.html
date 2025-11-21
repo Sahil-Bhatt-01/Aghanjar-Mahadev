@@ -43,7 +43,6 @@
     .gallery-item.hide {
       opacity: 0;
       transform: scale(0.8);
-      /* position: absolute; */
       pointer-events: none;
     }
 
@@ -106,18 +105,39 @@
       object-fit: cover;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-      animation: zoomIn 0.3s ease;
     }
 
-    @keyframes zoomIn {
+    /* Fade + Zoom In */
+    .fadeZoomIn {
+      animation: fadeZoomIn 0.45s ease-out forwards;
+    }
+
+    @keyframes fadeZoomIn {
       from {
-        transform: scale(0.4);
+        transform: scale(0.6);
         opacity: 0;
       }
 
       to {
         transform: scale(1);
         opacity: 1;
+      }
+    }
+
+    /* Fade + Zoom Out */
+    .fadeZoomOut {
+      animation: fadeZoomOut 0.35s ease-in forwards;
+    }
+
+    @keyframes fadeZoomOut {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(0.6);
+        opacity: 0;
       }
     }
 
@@ -138,14 +158,12 @@
       bottom: 50px;
       display: flex;
       gap: 25px;
-     
     }
 
     #prevBtn,
     #nextBtn {
       padding: 10px 22px;
       font-size: 20px;
-      border: #ffe0b2;
       border-radius: 50px;
       background: white;
       cursor: pointer;
@@ -154,7 +172,7 @@
 
     #prevBtn:hover,
     #nextBtn:hover {
-      background:#f8b400;
+      background: #f8b400;
     }
   </style>
 </head>
@@ -208,6 +226,10 @@
           <img src="images/aghanjar.jpg" class="gallery-img">
         </div>
 
+        <div class="col-md-4 gallery-item Temple">
+          <img src="images/logo.jpg" class="gallery-img">
+        </div>
+
       </div>
     </div>
   </div>
@@ -246,11 +268,11 @@
 
         items.forEach(item => {
           if (filter === "all" || item.classList.contains(filter)) {
-            item.classList.remove("hide");
             item.style.display = "block";
+            item.classList.remove("hide");
           } else {
             item.classList.add("hide");
-            item.style.display = "none"; 
+            setTimeout(() => item.style.display = "none", 400);
           }
         });
       });
@@ -274,17 +296,33 @@
 
     function openImage(index) {
       modal.style.display = "flex";
+
+      modalImg.classList.remove("fadeZoomOut");
+      modalImg.classList.remove("fadeZoomIn");
+
+      void modalImg.offsetWidth;
+
+      modalImg.classList.add("fadeZoomIn");
       modalImg.src = images[index].src;
     }
 
-    closeBtn.onclick = () => modal.style.display = "none";
+    function closeModal() {
+      modalImg.classList.remove("fadeZoomIn");
+      modalImg.classList.add("fadeZoomOut");
+
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 350);
+    }
+
+    closeBtn.onclick = () => closeModal();
 
     modal.onclick = e => {
-      if (e.target === modal) modal.style.display = "none";
+      if (e.target === modal) closeModal();
     };
 
     document.addEventListener("keydown", e => {
-      if (e.key === "Escape") modal.style.display = "none";
+      if (e.key === "Escape") closeModal();
     });
 
     document.getElementById("prevBtn").onclick = () => {
