@@ -38,6 +38,8 @@ header {
   display: flex;
   gap: 30px;
   align-items: center;
+  justify-content: space-between;
+  margin: 0px 10px;
 }
 
 .navlinks li a {
@@ -45,6 +47,8 @@ header {
   color: white;
   font-size: 17px;
   transition: 0.3s;
+  display: flex;justify-content: space-between;
+
 }
 
 .navlinks li a:hover {
@@ -52,11 +56,12 @@ header {
 }
 
 .donate {
-  padding: 8px 16px;
+  padding: 7px 14px;
   background: #ffcc00;
   color: #222 !important;
   border-radius: 6px;
   font-weight: bold;
+ 
 }
 
 /* Hamburger Button Hidden in Desktop */
@@ -295,17 +300,11 @@ header {
 
 /* our services */
 /* General Styles */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  color: #333;
-}
+
 
 /* /time schedule */
 .overlay {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(247, 247, 247);
   min-height: 100vh;
   padding: 60px 0;
 }
@@ -335,7 +334,7 @@ body {
   border: 2px solid #f7b84a;
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .schedule-item {
@@ -386,8 +385,9 @@ body {
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  background: rgba(255, 140, 0, 0.08);
+  background: #ffa726;
   transition: 0.3s;
+  color: #111;
 }
 
 .sun-card:hover {
@@ -397,12 +397,14 @@ body {
 .sun-card i {
   font-size: 40px;
   color: #ffdd8a;
+ 
 }
 
 .sun-card h4 {
   margin-top: 10px;
   font-size: 22px;
   color: #ffc46a;
+  color: #111;
 }
 
 /* Latest Sermons */
