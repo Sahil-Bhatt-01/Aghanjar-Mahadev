@@ -41,3 +41,32 @@ updateCountdown();
     });
   });
 
+  // time schedule
+  /* Fade-Zoom Animation on Scroll */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("in-view");
+  });
+});
+document.querySelectorAll(".fade-zoom").forEach(el => observer.observe(el));
+
+/* Countdown Timer */
+function updateCountdown() {
+  document.querySelectorAll(".schedule-item").forEach(item => {
+    const target = new Date(item.dataset.time);
+    const now = new Date();
+    let diff = target - now;
+
+    if (diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+    item.querySelector(".days").innerText = String(days).padStart(2, "0");
+    item.querySelector(".hours").innerText = String(hours).padStart(2, "0");
+  });
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+

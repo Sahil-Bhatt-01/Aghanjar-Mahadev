@@ -143,7 +143,7 @@ header {
 }
 
 /* Button */
-.btn {
+.hero-content .btn {
   display: inline-block;
   margin-top: 20px;
   background-color: #f8b400;
@@ -152,7 +152,7 @@ header {
   padding: 12px 24px;
   border-radius: 4px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  /* transition: background 0.3s ease; */
 }
 
 .btn:hover {
@@ -301,4 +301,217 @@ body {
   padding: 0;
   background: #fff;
   color: #333;
+}
+
+/* /time schedule */
+.overlay {
+  background: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+/* Title */
+.section-title {
+  font-size: 42px;
+  color: #f7b84a;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: #f7b84a;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+/* Schedule Box */
+.schedule-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid #f7b84a;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+.schedule-item {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-item:last-child {
+  border-bottom: none;
+}
+
+/* Countdown Circles */
+.count-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #f7b84a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.count-circle strong {
+  font-size: 18px;
+}
+
+/* Fade Zoom Animation */
+.fade-zoom {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: 0.6s ease;
+}
+
+.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Sunrise / Sunset Cards */
+.sun-card {
+  border: 2px solid #ffa726;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 140, 0, 0.08);
+  transition: 0.3s;
+}
+
+.sun-card:hover {
+  transform: translateY(-6px);
+}
+
+.sun-card i {
+  font-size: 40px;
+  color: #ffdd8a;
+}
+
+.sun-card h4 {
+  margin-top: 10px;
+  font-size: 22px;
+  color: #ffc46a;
+}
+
+/* Latest Sermons */
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #111;
+  font-size: 20px;
+}
+
+.section-title h2 {
+  font-size: 26px;
+  font-weight: 600;
+  font-family: serif;
+}
+
+.section-title .line {
+  width: 60px;
+  height: 3px;
+  background: #d4a253;
+  margin: 10px auto;
+}
+
+.sermon-card {
+  background: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.sermon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sermon-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.meta small {
+  margin-right: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+.meta i {
+  margin-right: 5px;
+}
+
+/* footer */
+.foot {
+  background-color: rgb(247, 247, 247);
+}
+
+.contact-section {
+  padding: 80px 0;
+  text-align: center;
+  background-color: rgb(247, 247, 247);
+}
+
+.contact-section h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.contact-section .subtitle {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #666;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.contact-input {
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  font-size: 14px;
+}
+
+textarea.contact-input {
+  height: 180px;
+  resize: none;
+}
+
+.send-btn {
+  background-color: #f9b233;
+  border: none;
+  padding: 12px 35px;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.send-btn:hover {
+  background-color: #d9981f;
+}
+
+.copy{
+  background-color:#f9b233 ;
+  color: #111;
+  text-align: center;
 }
