@@ -9,7 +9,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
+<style>
+  .foot{
+       background: #f7f7f7;
+  }
+   .contact-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    }
 
+    .map-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .form-control {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .btn-submit {
+      background: #ff6a00;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #e45800;
+    }
+
+    .address-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+</style>
 </head>
 
 <body>
@@ -271,8 +316,9 @@
 
     </div>
 
-    
-<div class="container py-5">
+    <!-- footer --> 
+     <footer class="foot">
+   <div class="container py-5">
     <div class="row g-4">
 
       <!-- LEFT FORM -->
@@ -298,36 +344,15 @@
       <!-- RIGHT SIDE MAP + ADDRESS -->
       <div class="col-lg-6">
 
-        <!-- Google Map -->
+        <!-- FULLY RESPONSIVE GOOGLE MAP -->
         <div class="contact-box p-0">
-
-          <div class="embed-map-fixed">
-            <div class="embed-map-container"><iframe class="embed-map-frame" frameborder="0" scrolling="no"
-                marginheight="0" marginwidth="0"
-                src="https://maps.google.com/maps?width=600&height=400&hl=en&q=aghanjar%20mahadev&t=k&z=14&ie=UTF8&iwloc=B&output=embed"></iframe><a
-                href="https://sprunkiretake.net"
-                style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:1px;overflow:hidden">sprunki
-                retake</a></div>
-            <style>
-              .embed-map-fixed {
-                position: relative;
-                text-align: right;
-                width: 600px;
-                height: 400px;
-              }
-
-              .embed-map-container {
-                overflow: hidden;
-                background: none !important;
-                width: 600px;
-                height: 400px;
-              }
-
-              .embed-map-frame {
-                width: 600px !important;
-                height: 400px !important;
-              }
-            </style>
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.google.com/maps?q=aghanjar%20mahadev&output=embed"
+              allowfullscreen
+              loading="lazy"
+              style="border:0; border-radius: 12px 12px 0 0;">
+            </iframe>
           </div>
         </div>
 
@@ -336,7 +361,7 @@
           <div class="address-title">ADDRESS:</div>
 
           <p>
-            Districr Kangra, Tehsil Dharmshala, khanyara village.
+            Districr Kangra, Tehsil Dharmshala, Khanyara Village.
           </p>
 
           <p><strong>Contact Number:</strong> 8580855073</p>
@@ -348,10 +373,11 @@
 
     </div>
   </div>
-
- <div class="copy">
-    <p>Copyright © 2022, All rights Reserved | Privacy Policy | Terms & Conditions</p>
-  </div>
+    <div class="copy">
+      <p>Copyright © 2022, All rights Reserved | Privacy Policy | Terms & Conditions</p>
+     </div>
+     </footer>
+   
 
 
   <script src="script.js"></script>
