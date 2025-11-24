@@ -1,104 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Form</title>
-  <link rel="stylesheet" href="contact.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Section</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f7f7f7;
+    }
+
+    .contact-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .form-control {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .btn-submit {
+      background: #ff6a00;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #e45800;
+    }
+
+    .address-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
+
 <body>
 
-<section class="contact-section">
-  <h2 class="section-title">Send Us a Message</h2>
-  <p class="section-subtitle">
-    Enthusiastically underwhelm quality benefits rather than professional outside the box
-    thinking. Distinctively network highly efficient leadership skills
-  </p>
+  <div class="container py-5">
+    <div class="row g-4">
 
-  <form class="contact-form">
-    <div class="form-row">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
-    </div>
-    <input type="text" placeholder="Subject" required>
-    <textarea rows="6" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Now</button>
-  </form>
-</section>
+      <!-- LEFT FORM -->
+      <div class="col-lg-6">
+        <div class="contact-box">
 
-<footer class="footer">
-  <div class="footer-container">
+          <label>Your name</label>
+          <input type="text" class="form-control mb-3">
 
-    <!-- About Us -->
-    <div class="footer-col about">
-      <h3>About Us</h3>
-      <p>
-        You need to be sure there isn’t anything embarrassing hidden in the middle of text.
-      </p>
-      <ul class="contact-info">
-        <li><i class="fas fa-phone-alt"></i> 987-987-930-302</li>
-        <li><i class="fas fa-envelope"></i> info@example.com</li>
-        <li><i class="fas fa-map-marker-alt"></i> 14/A, Poor Street City Tower, New York USA</li>
-      </ul>
-    </div>
+          <label>Your email</label>
+          <input type="email" class="form-control mb-3">
 
-    <!-- Information -->
-    <div class="footer-col">
-      <h3>Information</h3>
-      <ul>
-        <li><a href="#">Puja</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Temple</a></li>
-        <li><a href="#">Holis</a></li>
-        <li><a href="#">Volunteers</a></li>
-        <li><a href="#">Donation</a></li>
-      </ul>
-    </div>
+          <label>Subject</label>
+          <input type="text" class="form-control mb-3">
 
-    <!-- Others -->
-    <div class="footer-col">
-      <h3>Others</h3>
-      <ul>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">Checkout</a></li>
-        <li><a href="#">Donation</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
-    </div>
+          <label>Your message (optional)</label>
+          <textarea class="form-control mb-3" rows="5"></textarea>
 
-    <!-- Recent Posts -->
-    <div class="footer-col recent-posts">
-      <h3>Recent Posts</h3>
-
-      <div class="post-item">
-        <img src="/image/galaxy.gif" alt="post1">
-        <div class="post-text">
-          <p><i class="far fa-calendar-alt"></i> May 20, 2024</p>
-          <h4>As we've all discovered by now, the world can change</h4>
+          <button class="btn-submit">Submit</button>
         </div>
       </div>
 
-      <div class="post-item">
-        <img src="/image/mahadev.jpg" alt="post2">
-        <div class="post-text">
-          <p><i class="far fa-calendar-alt"></i> May 20, 2024</p>
-          <h4>Testimony love offering so blessed</h4>
-        </div>
-      </div>
+      <!-- RIGHT SIDE MAP + ADDRESS -->
+      <div class="col-lg-6">
 
-      <div class="post-item">
-        <img src="/image/photo.jpeg" alt="post3">
-        <div class="post-text">
-          <p><i class="far fa-calendar-alt"></i> May 20, 2024</p>
-          <h4>As we've all discovered by now, the world can change</h4>
+        <!-- Google Map -->
+        <div class="contact-box p-0">
+
+          <div class="embed-map-fixed">
+            <div class="embed-map-container"><iframe class="embed-map-frame" frameborder="0" scrolling="no"
+                marginheight="0" marginwidth="0"
+                src="https://maps.google.com/maps?width=600&height=400&hl=en&q=aghanjar%20mahadev&t=k&z=14&ie=UTF8&iwloc=B&output=embed"></iframe><a
+                href="https://sprunkiretake.net"
+                style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:1px;overflow:hidden">sprunki
+                retake</a></div>
+            <style>
+              .embed-map-fixed {
+                position: relative;
+                text-align: right;
+                width: 600px;
+                height: 400px;
+              }
+
+              .embed-map-container {
+                overflow: hidden;
+                background: none !important;
+                width: 600px;
+                height: 400px;
+              }
+
+              .embed-map-frame {
+                width: 600px !important;
+                height: 400px !important;
+              }
+            </style>
+          </div>
         </div>
+
+        <!-- Address Box -->
+        <div class="map-box">
+          <div class="address-title">ADDRESS:</div>
+
+          <p>
+            Districr Kangra, Tehsil Dharmshala, khanyara village.
+          </p>
+
+          <p><strong>Contact Number:</strong> 8580855073</p>
+
+          <p><strong>Email:</strong> sahilbhatt358@gmail.com</p>
+        </div>
+
       </div>
 
     </div>
-  
-</footer>
+  </div>
+
 </body>
+
 </html>
